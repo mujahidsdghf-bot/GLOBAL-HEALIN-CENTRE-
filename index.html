@@ -10,48 +10,57 @@
 <body class="bg-green-50 text-gray-800">
 
     <header class="bg-green-800 text-white p-8 text-center shadow-lg">
-        <h1 class="text-3xl md:text-4xl font-bold uppercase tracking-tight">Global Healing Centre</h1>
-        <p class="mt-2 opacity-90 font-medium">ఆయుర్వేద, అక్యుపంక్చర్, యునాని మరియు హోమియోపతి వైద్యశాల</p>
+        <h1 class="text-3xl font-bold uppercase">Global Healing Centre</h1>
+        <p class="mt-2 opacity-90 text-sm">ఆయుర్వేద, అక్యుపంక్చర్, యునాని మరియు హోమియోపతి వైద్యశాల</p>
         <div class="mt-6">
-            <a href="tel:+919515116919" class="bg-white text-green-800 px-8 py-3 rounded-full font-bold text-xl shadow-md inline-block border-2 border-green-900">
+            <a href="tel:+919515116919" class="bg-white text-green-800 px-6 py-3 rounded-full font-bold text-xl shadow-md inline-block">
                 <i class="fas fa-phone-alt mr-2"></i> 95151 16919
             </a>
         </div>
     </header>
 
-    <section class="py-12 container mx-auto px-6">
-        <h2 class="text-3xl font-bold text-center text-green-900 mb-10">హాస్పిటల్ గ్యాలరీ</h2>
-        
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div class="bg-white rounded-2xl shadow-lg overflow-hidden border">
-                <img src="hospital_main.jpg" alt="Hospital Main" class="w-full h-56 object-cover">
-                <p class="p-4 text-center font-bold">Main Hospital</p>
+    <section class="py-10 container mx-auto px-6 text-center">
+        <h2 class="text-2xl font-bold text-green-800 mb-8">హాస్పిటల్ గ్యాలరీ</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="bg-white p-2 rounded-xl shadow-md">
+                <img src="1004912229.jpg" onerror="this.src='https://via.placeholder.com/300x200?text=Upload+Photo+Again'" class="rounded-lg w-full h-48 object-cover">
+                <p class="mt-2 font-semibold">Hospital View</p>
             </div>
-
-            <div class="bg-black rounded-2xl shadow-lg overflow-hidden border">
-                <video controls class="w-full h-56">
+            
+            <div class="bg-black rounded-xl shadow-md overflow-hidden">
+                <video controls class="w-full h-48">
                     <source src="hospital_video.mp4" type="video/mp4">
                 </video>
-                <p class="p-4 text-center font-bold bg-white text-gray-800">Treatment Video</p>
+                <p class="p-2 bg-white text-gray-800 font-semibold">Treatment Video</p>
             </div>
 
-            <div class="bg-white rounded-2xl shadow-lg overflow-hidden border">
-                <img src="treatment.jpg" alt="Treatment" class="w-full h-56 object-cover">
-                <p class="p-4 text-center font-bold">Treatment Room</p>
+            <div class="bg-white p-4 rounded-xl shadow-md flex flex-col items-center justify-center">
+                <h3 class="font-bold mb-2">Scan for Website</h3>
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://mujahidsdghf-bot.github.io/GLOBAL-HEALIN-CENTRE-/" class="w-32 h-32">
+                <p class="text-xs mt-2 text-gray-500">మా వెబ్‌సైట్ కోసం స్కాన్ చేయండి</p>
             </div>
         </div>
     </section>
 
-    <footer class="bg-gray-900 text-white p-12 text-center">
-        <h3 class="text-xl font-bold mb-4 underline text-green-400">మా అడ్రస్</h3>
-        <p class="text-lg leading-relaxed">
-            Cheruvu Bazar Road Pakabanda Bazar, <br>
+    <section class="py-10 bg-white">
+        <div class="container mx-auto px-6">
+            <h2 class="text-2xl font-bold text-center text-green-800 mb-6">మా లొకేషన్ (Google Map)</h2>
+            <div class="rounded-2xl overflow-hidden shadow-2xl border-4 border-green-100">
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3801.328336214555!2d80.1423!3d17.2473!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a34513755555555%3A0x5555555555555555!2sCheruvu%20Bazar%20Road%2C%20Khammam!5e0!3m2!1ste!2sin!4v1713700000000!5m2!1ste!2sin" 
+                    width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy">
+                </iframe>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-gray-900 text-white p-10 text-center">
+        <p class="text-lg">
+            📍 Cheruvu Bazar Road Pakabanda Bazar, <br>
             Manikya Nagar Basti, Khammam, <br>
             Telangana 507001
         </p>
-        <div class="mt-8 border-t border-gray-800 pt-6 text-gray-400 text-sm">
-            © 2026 Global Healing Centre. All Rights Reserved.
-        </div>
+        <p class="mt-6 text-gray-500 text-xs">© 2026 Global Healing Centre. All Rights Reserved.</p>
     </footer>
 
 </body>
