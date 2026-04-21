@@ -30,23 +30,28 @@
     <section class="py-12 bg-white px-6 shadow-inner">
         <div class="container mx-auto">
             <h3 class="text-2xl font-bold text-center mb-10 text-green-800 underline decoration-yellow-500 underline-offset-8">హాస్పిటల్ గ్యాలరీ</h3>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
                 
                 <div class="rounded-3xl overflow-hidden shadow-xl border">
-                    <img src="hospital_main.jpg" alt="Hospital Entrance" class="w-full h-64 object-cover">
-                    <p class="p-4 text-center font-bold bg-green-50">ముఖ్య ద్వారం (Entrance)</p>
+                    <picture>
+                        <source srcset="hospital_main.jpg" type="image/jpeg">
+                        <source srcset="hospital_main.jpg.webp" type="image/webp">
+                        <img src="hospital_main.jpg" alt="Entrance" class="w-full h-64 object-cover" onerror="this.src='treatment.jpg.webp'">
+                    </picture>
+                    <p class="p-4 font-bold bg-green-50">ముఖ్య ద్వారం (Entrance)</p>
                 </div>
 
                 <div class="rounded-3xl overflow-hidden shadow-xl bg-black">
                     <video controls class="w-full h-64">
                         <source src="hospital_video.mp4.mp4" type="video/mp4">
+                        <source src="hospital_video.mp4" type="video/mp4">
                     </video>
-                    <p class="p-4 text-center font-bold bg-gray-800 text-white italic text-xs">Live Treatment Video</p>
+                    <p class="p-4 font-bold bg-gray-800 text-white italic text-xs">Live Treatment Video</p>
                 </div>
 
                 <div class="rounded-3xl overflow-hidden shadow-xl border">
-                    <img src="treatment.jpg.webp" alt="Treatment Area" class="w-full h-64 object-cover">
-                    <p class="p-4 text-center font-bold bg-green-50">చికిత్స గది (Treatment Room)</p>
+                    <img src="treatment.jpg.webp" alt="Room" class="w-full h-64 object-cover">
+                    <p class="p-4 font-bold bg-green-50">చికిత్స గది (Treatment Room)</p>
                 </div>
             </div>
         </div>
@@ -54,22 +59,24 @@
 
     <section class="py-16 bg-green-50 border-t border-green-100">
         <div class="container mx-auto px-6 text-center">
-            <h3 class="text-3xl font-bold mb-8 text-green-900"><i class="fas fa-map-marker-alt mr-2 text-red-500"></i> మా లొకేషన్</h3>
+            <h3 class="text-3xl font-bold mb-8 text-green-900">మా లొకేషన్</h3>
             <div class="max-w-5xl mx-auto rounded-3xl overflow-hidden shadow-2xl border-8 border-white mb-8">
                 <iframe 
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3805.213606786687!2d80.1218579!3d17.2435016!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a3559d68bad6eb5%3A0x92d8adb57ec6fab3!2sGLOBAL%20HEALING%20CENTRE%20(Dr%20KHIZAR)!5e0!3m2!1sen!2sin!4v1713700000000!5m2!1sen!2sin" 
+                    src="https://www.google.com/maps/search/?api=1&query=Global+Healing+Centre+Cheruvu+Bazar+Road+Khammam7" 
                     width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
             </div>
-            <a href="https://maps.app.goo.gl/qL8G2ZqHjA6Xj8R6A" target="_blank" class="inline-block bg-blue-600 text-white px-10 py-4 rounded-xl font-bold text-xl shadow-lg">
+            <a href="https://www.google.com/maps/search/?api=1&query=Global+Healing+Centre+Cheruvu+Bazar+Road+Khammam8" target="_blank" class="inline-block bg-blue-600 text-white px-10 py-4 rounded-xl font-bold text-xl shadow-lg hover:bg-blue-700">
                 <i class="fas fa-location-arrow mr-2"></i> గూగుల్ మ్యాప్స్‌లో దారి చూడండి
             </a>
         </div>
     </section>
 
-    <footer class="bg-gray-900 text-white pt-16 pb-8 text-center">
-        <p class="text-xl leading-relaxed bg-gray-800 p-6 rounded-2xl inline-block mb-6 border border-gray-700">
-            Cheruvu Bazar Road Pakabanda Bazar,<br> Manikya Nagar Basti, Khammam, 507001
-        </p>
+    <footer class="bg-gray-900 text-white pt-16 pb-8 text-center px-4">
+        <div class="bg-gray-800 p-6 rounded-2xl inline-block mb-6 border border-gray-700 max-w-lg">
+            <p class="text-lg leading-relaxed italic">
+                Cheruvu Bazar Road Pakabanda Bazar,<br> Manikya Nagar Basti, Khammam, 507001
+            </p>
+        </div>
         <p class="text-lg opacity-80">© 2026 Global Healing Centre. Dr. KHIZAR</p>
     </footer>
 
