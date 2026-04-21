@@ -7,59 +7,51 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
-<body class="bg-green-50 text-gray-800 font-sans">
+<body class="bg-green-50 text-gray-800">
 
-    <header class="bg-green-800 text-white p-8 text-center shadow-2xl relative">
-        <h1 class="text-4xl font-black uppercase tracking-tighter">Global Healing Centre</h1>
-        <p class="mt-2 text-lg opacity-90 font-medium">Ayurvedic | Acupuncture | Unani | Homeopathy</p>
-        
+    <header class="bg-green-800 text-white p-8 text-center shadow-lg">
+        <h1 class="text-3xl md:text-4xl font-bold uppercase">Global Healing Centre</h1>
+        <p class="mt-2 opacity-90">ఆయుర్వేద, అక్యుపంక్చర్, యునాని మరియు హోమియోపతి వైద్యశాల</p>
         <div class="mt-6">
-            <a href="tel:+919515116919" class="inline-flex items-center bg-white text-green-800 px-8 py-3 rounded-full font-extrabold text-xl shadow-lg hover:bg-green-100 transition-all border-2 border-green-800">
-                <i class="fas fa-phone-alt mr-3"></i> 9515116919
+            <a href="tel:+919515116919" class="bg-white text-green-800 px-6 py-3 rounded-full font-bold text-xl shadow-md inline-block">
+                <i class="fas fa-phone-alt mr-2"></i> 9515116919
             </a>
         </div>
     </header>
 
-    <section class="py-12 container mx-auto px-4 text-center">
-        <h2 class="text-3xl font-bold text-green-900 mb-10">మా ప్రత్యేక చికిత్సలు</h2>
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-            <div class="p-4 bg-white rounded-xl shadow border-b-4 border-green-600 font-bold">ఆయుర్వేదం</div>
-            <div class="p-4 bg-white rounded-xl shadow border-b-4 border-blue-600 font-bold">అక్యుపంక్చర్</div>
-            <div class="p-4 bg-white rounded-xl shadow border-b-4 border-orange-600 font-bold">యునాని</div>
-            <div class="p-4 bg-white rounded-xl shadow border-b-4 border-purple-600 font-bold">హోమియోపతి</div>
-        </div>
-    </section>
+    <section class="py-12 container mx-auto px-6">
+        <h2 class="text-3xl font-bold text-center text-green-800 mb-10">హాస్పిటల్ గ్యాలరీ</h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="bg-white rounded-2xl shadow-lg overflow-hidden border">
+                <img src="hospital_main.jpg" alt="Hospital Main" class="w-full h-56 object-cover">
+                <p class="p-4 text-center font-bold">Main Hospital</p>
+            </div>
 
-    <section class="py-12 bg-white px-6">
-        <div class="container mx-auto">
-            <h3 class="text-2xl font-bold text-center mb-8">హాస్పిటల్ గ్యాలరీ</h3>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div class="rounded-2xl overflow-hidden shadow-lg border">
-                    <img src="hospital_main.jpg" alt="Hospital Main View" class="w-full h-56 object-cover">
-                    <p class="p-3 text-center font-bold bg-gray-50">Main Entrance</p>
-                </div>
-                <div class="rounded-2xl overflow-hidden shadow-lg border">
-                    <img src="treatment.jpg" alt="Treatment Area" class="w-full h-56 object-cover">
-                    <p class="p-3 text-center font-bold bg-gray-50">Treatment Room</p>
-                </div>
-                <div class="rounded-2xl overflow-hidden shadow-lg border bg-black flex items-center justify-center">
-                    <video controls class="w-full h-56">
-                        <source src="hospital_video.mp4" type="video/mp4">
-                    </video>
-                </div>
+            <div class="bg-black rounded-2xl shadow-lg overflow-hidden border">
+                <video controls class="w-full h-56">
+                    <source src="hospital_video.mp4" type="video/mp4">
+                    Your browser does not support the video.
+                </video>
+                <p class="p-4 text-center font-bold bg-white text-gray-800">Treatment Video</p>
+            </div>
+
+            <div class="bg-white rounded-2xl shadow-lg overflow-hidden border">
+                <img src="treatment.jpg" alt="Treatment" class="w-full h-56 object-cover">
+                <p class="p-4 text-center font-bold">Special Treatment Room</p>
             </div>
         </div>
     </section>
 
-    <footer class="bg-green-900 text-white p-10 mt-10">
-        <div class="container mx-auto text-center">
-            <h4 class="text-xl font-bold mb-4 underline">మా అడ్రస్</h4>
-            <p class="text-lg leading-relaxed">
-                Cheruvu Bazar Road Pakabanda Bazar, <br>
-                Manikya Nagar Basti, Khammam, <br>
-                Telangana 507001
-            </p>
-            <p class="mt-8 text-green-300">© 2026 Global Healing Centre | Designed by You</p>
+    <footer class="bg-gray-900 text-white p-10 text-center">
+        <h3 class="text-xl font-bold mb-4 underline">మా అడ్రస్</h3>
+        <p class="text-lg">
+            Cheruvu Bazar Road Pakabanda Bazar, <br>
+            Manikya Nagar Basti, Khammam, <br>
+            Telangana 507001
+        </p>
+        <div class="mt-6 border-t border-gray-700 pt-6 text-gray-500 text-sm">
+            © 2026 Global Healing Centre.
         </div>
     </footer>
 
