@@ -3,59 +3,63 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Global Healing Centre - ఖమ్మం</title>
+    <title>Global Healing Centre - Khammam</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
-<body class="bg-green-50 text-gray-800">
+<body class="bg-green-50 text-gray-800 font-sans">
 
-    <header class="bg-green-700 text-white p-6 text-center shadow-lg">
-        <h1 class="text-3xl font-bold uppercase tracking-wide">Global Healing Centre</h1>
-        <p class="mt-2 opacity-90">ఆయుర్వేద, అక్యుపంక్చర్, యునాని మరియు హోమియోపతి వైద్యశాల</p>
+    <header class="bg-green-800 text-white p-8 text-center shadow-2xl relative">
+        <h1 class="text-4xl font-black uppercase tracking-tighter">Global Healing Centre</h1>
+        <p class="mt-2 text-lg opacity-90 font-medium">Ayurvedic | Acupuncture | Unani | Homeopathy</p>
+        
+        <div class="mt-6">
+            <a href="tel:+919515116919" class="inline-flex items-center bg-white text-green-800 px-8 py-3 rounded-full font-extrabold text-xl shadow-lg hover:bg-green-100 transition-all border-2 border-green-800">
+                <i class="fas fa-phone-alt mr-3"></i> 9515116919
+            </a>
+        </div>
     </header>
 
-    <section class="p-8 container mx-auto">
-        <h2 class="text-2xl font-bold text-center text-green-800 mb-8 underline">మా చికిత్సలు (Our Specialties)</h2>
-        
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div class="bg-white p-6 rounded-2xl shadow-md border-t-4 border-orange-500 hover:scale-105 transition">
-                <i class="fas fa-leaf text-3xl text-orange-500 mb-4"></i>
-                <h3 class="font-bold text-lg">ఆయుర్వేదం</h3>
-                <p class="text-sm text-gray-600">సహజ సిద్ధమైన మూలికలతో సంపూర్ణ ఆరోగ్యం.</p>
-            </div>
+    <section class="py-12 container mx-auto px-4 text-center">
+        <h2 class="text-3xl font-bold text-green-900 mb-10">మా ప్రత్యేక చికిత్సలు</h2>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div class="p-4 bg-white rounded-xl shadow border-b-4 border-green-600 font-bold">ఆయుర్వేదం</div>
+            <div class="p-4 bg-white rounded-xl shadow border-b-4 border-blue-600 font-bold">అక్యుపంక్చర్</div>
+            <div class="p-4 bg-white rounded-xl shadow border-b-4 border-orange-600 font-bold">యునాని</div>
+            <div class="p-4 bg-white rounded-xl shadow border-b-4 border-purple-600 font-bold">హోమియోపతి</div>
+        </div>
+    </section>
 
-            <div class="bg-white p-6 rounded-2xl shadow-md border-t-4 border-blue-500 hover:scale-105 transition">
-                <i class="fas fa-needle text-3xl text-blue-500 mb-4"></i>
-                <h3 class="font-bold text-lg">అక్యుపంక్చర్</h3>
-                <p class="text-sm text-gray-600">నరాల సమస్యలకు చైనీస్ పురాతన వైద్యం.</p>
-            </div>
-
-            <div class="bg-white p-6 rounded-2xl shadow-md border-t-4 border-green-500 hover:scale-105 transition">
-                <i class="fas fa-mortar-pestle text-3xl text-green-500 mb-4"></i>
-                <h3 class="font-bold text-lg">యునాని</h3>
-                <p class="text-sm text-gray-600">నమ్మకమైన యునాని చికిత్సా పద్ధతులు.</p>
-            </div>
-
-            <div class="bg-white p-6 rounded-2xl shadow-md border-t-4 border-purple-500 hover:scale-105 transition">
-                <i class="fas fa-pills text-3xl text-purple-500 mb-4"></i>
-                <h3 class="font-bold text-lg">హోమియోపతి</h3>
-                <p class="text-sm text-gray-600">దీర్ఘకాలిక వ్యాధులకు సురక్షితమైన మందులు.</p>
+    <section class="py-12 bg-white px-6">
+        <div class="container mx-auto">
+            <h3 class="text-2xl font-bold text-center mb-8">హాస్పిటల్ గ్యాలరీ</h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="rounded-2xl overflow-hidden shadow-lg border">
+                    <img src="hospital_main.jpg" alt="Hospital Main View" class="w-full h-56 object-cover">
+                    <p class="p-3 text-center font-bold bg-gray-50">Main Entrance</p>
+                </div>
+                <div class="rounded-2xl overflow-hidden shadow-lg border">
+                    <img src="treatment.jpg" alt="Treatment Area" class="w-full h-56 object-cover">
+                    <p class="p-3 text-center font-bold bg-gray-50">Treatment Room</p>
+                </div>
+                <div class="rounded-2xl overflow-hidden shadow-lg border bg-black flex items-center justify-center">
+                    <video controls class="w-full h-56">
+                        <source src="hospital_video.mp4" type="video/mp4">
+                    </video>
+                </div>
             </div>
         </div>
     </section>
 
-    <footer class="bg-gray-800 text-white p-10 mt-10">
-        <div class="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div>
-                <h4 class="text-xl font-bold mb-4">సంప్రదించండి</h4>
-                <p class="text-gray-300">📍 Cheruvu Bazar Road Pakabanda Bazar, Manikya Nagar Basti, Khammam, Telangana 507001</p>
-                <div class="mt-4">
-                    <button class="bg-green-600 px-6 py-2 rounded-full font-bold">Appointment బుక్ చేయండి</button>
-                </div>
-            </div>
-            <div class="h-40 bg-gray-700 rounded-lg flex items-center justify-center italic text-gray-400">
-                Google Map ఇక్కడ వస్తుంది...
-            </div>
+    <footer class="bg-green-900 text-white p-10 mt-10">
+        <div class="container mx-auto text-center">
+            <h4 class="text-xl font-bold mb-4 underline">మా అడ్రస్</h4>
+            <p class="text-lg leading-relaxed">
+                Cheruvu Bazar Road Pakabanda Bazar, <br>
+                Manikya Nagar Basti, Khammam, <br>
+                Telangana 507001
+            </p>
+            <p class="mt-8 text-green-300">© 2026 Global Healing Centre | Designed by You</p>
         </div>
     </footer>
 
