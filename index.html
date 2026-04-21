@@ -9,9 +9,29 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Hind+Telugu:wght@400;700&display=swap');
         body { font-family: 'Hind Telugu', sans-serif; }
+        .whatsapp-float {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #25d366;
+            color: white;
+            padding: 15px 20px;
+            border-radius: 50px;
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
     </style>
 </head>
 <body class="bg-green-50 text-gray-800">
+
+    <a href="https://wa.me/919515116919?text=Hello%20Dr.%20Khizar,%20I%20want%20to%20book%20an%20appointment." target="_blank" class="whatsapp-float hover:scale-110 transition-transform">
+        <i class="fab fa-whatsapp text-2xl"></i>
+        <span>WhatsApp అపాయింట్‌మెంట్</span>
+    </a>
 
     <header class="bg-green-800 text-white p-8 text-center shadow-lg border-b-4 border-yellow-500">
         <h1 class="text-3xl md:text-5xl font-black uppercase tracking-tighter">Global Healing Centre</h1>
@@ -20,24 +40,20 @@
         </div>
         <p class="mt-4 opacity-90 font-medium text-lg text-yellow-100">ఆయుర్వేద, అక్యుపంక్చర్, యునాని మరియు హోమియోపతి వైద్యశాల</p>
         
-        <div class="mt-8">
-            <a href="tel:+919515116919" class="bg-white text-green-800 px-10 py-4 rounded-full font-bold text-2xl shadow-xl inline-block hover:scale-105 transition-transform border-2 border-green-900">
-                <i class="fas fa-phone-alt mr-2 text-green-600"></i> 95151 16919
+        <div class="mt-8 flex flex-col md:flex-row justify-center gap-4">
+            <a href="tel:+919515116919" class="bg-white text-green-800 px-8 py-3 rounded-full font-bold text-xl shadow-xl inline-block hover:bg-green-50 border-2 border-green-900">
+                <i class="fas fa-phone-alt mr-2 text-green-600"></i> Call Now
             </a>
         </div>
     </header>
 
-    <section class="py-12 bg-white px-6 shadow-inner">
+    <section class="py-12 bg-white px-6">
         <div class="container mx-auto">
             <h3 class="text-2xl font-bold text-center mb-10 text-green-800 underline decoration-yellow-500 underline-offset-8">హాస్పిటల్ గ్యాలరీ</h3>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
                 
                 <div class="rounded-3xl overflow-hidden shadow-xl border">
-                    <picture>
-                        <source srcset="hospital_main.jpg" type="image/jpeg">
-                        <source srcset="hospital_main.jpg.webp" type="image/webp">
-                        <img src="hospital_main.jpg" alt="Entrance" class="w-full h-64 object-cover" onerror="this.src='treatment.jpg.webp'">
-                    </picture>
+                    <img src="hospital_main.jpg" alt="Hospital Entrance" class="w-full h-64 object-cover" onerror="this.src='hospital_main.jpg.webp'">
                     <p class="p-4 font-bold bg-green-50">ముఖ్య ద్వారం (Entrance)</p>
                 </div>
 
@@ -46,38 +62,33 @@
                         <source src="hospital_video.mp4.mp4" type="video/mp4">
                         <source src="hospital_video.mp4" type="video/mp4">
                     </video>
-                    <p class="p-4 font-bold bg-gray-800 text-white italic text-xs">Live Treatment Video</p>
+                    <p class="p-4 font-bold bg-gray-800 text-white italic text-xs">Treatment Video</p>
                 </div>
 
                 <div class="rounded-3xl overflow-hidden shadow-xl border">
-                    <img src="treatment.jpg.webp" alt="Room" class="w-full h-64 object-cover">
+                    <img src="treatment.jpg.webp" alt="Treatment Room" class="w-full h-64 object-cover">
                     <p class="p-4 font-bold bg-green-50">చికిత్స గది (Treatment Room)</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="py-16 bg-green-50 border-t border-green-100">
-        <div class="container mx-auto px-6 text-center">
-            <h3 class="text-3xl font-bold mb-8 text-green-900">మా లొకేషన్</h3>
-            <div class="max-w-5xl mx-auto rounded-3xl overflow-hidden shadow-2xl border-8 border-white mb-8">
-                <iframe 
-                    src="https://www.google.com/maps/search/?api=1&query=Global+Healing+Centre+Cheruvu+Bazar+Road+Khammam7" 
+    <section class="py-16 bg-green-50 border-t border-green-100 text-center">
+        <h3 class="text-3xl font-bold mb-8 text-green-900">మా లొకేషన్</h3>
+        <div class="max-w-5xl mx-auto rounded-3xl overflow-hidden shadow-2xl border-8 border-white mb-8">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3801.328362678683!2d80.1477467!3d17.2514081!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a3559d68bad6eb5%3A0x92d8ad5d7fc6f9b3!2sGLOBAL%20HEALING%20CENTRE%20(Dr%20KHIZAR)!5e0!3m2!1sen!2sin!4v1713700000000!5m2!1sen!2sin" 
                     width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-            </div>
-            <a href="https://www.google.com/maps/search/?api=1&query=Global+Healing+Centre+Cheruvu+Bazar+Road+Khammam8" target="_blank" class="inline-block bg-blue-600 text-white px-10 py-4 rounded-xl font-bold text-xl shadow-lg hover:bg-blue-700">
-                <i class="fas fa-location-arrow mr-2"></i> గూగుల్ మ్యాప్స్‌లో దారి చూడండి
-            </a>
         </div>
+        <a href="https://maps.app.goo.gl/tW6ti9yN69Gkl2t29" target="_blank" class="inline-block bg-blue-600 text-white px-10 py-4 rounded-xl font-bold text-xl shadow-lg hover:bg-blue-700">
+            <i class="fas fa-location-arrow mr-2"></i> గూగుల్ మ్యాప్స్‌లో దారి చూడండి
+        </a>
     </section>
 
-    <footer class="bg-gray-900 text-white pt-16 pb-8 text-center px-4">
-        <div class="bg-gray-800 p-6 rounded-2xl inline-block mb-6 border border-gray-700 max-w-lg">
-            <p class="text-lg leading-relaxed italic">
-                Cheruvu Bazar Road Pakabanda Bazar,<br> Manikya Nagar Basti, Khammam, 507001
-            </p>
+    <footer class="bg-gray-900 text-white pt-12 pb-8 text-center px-4">
+        <div class="max-w-lg mx-auto bg-gray-800 p-6 rounded-2xl mb-6">
+            <p class="text-lg">Cheruvu Bazar Road, Pakabanda Bazar,<br>Khammam, Telangana 507001</p>
         </div>
-        <p class="text-lg opacity-80">© 2026 Global Healing Centre. Dr. KHIZAR</p>
+        <p class="text-lg opacity-80 font-bold">© 2026 Global Healing Centre. Dr. KHIZAR</p>
     </footer>
 
 </body>
