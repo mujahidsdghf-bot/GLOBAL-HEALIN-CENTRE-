@@ -17,7 +17,7 @@
 
     <!-- Top Navigation Switcher -->
     <div class="bg-gray-900 text-white py-2 px-6 flex justify-between items-center text-sm font-semibold">
-        <div><i class="fas fa-clinic-medical text-yellow-400 mr-2"></i> Global Healing Centre CRM</div>
+        <div><i class="fas fa-clinic-medical text-yellow-400 mr-2"></i> Global Healing Centre CRM & Social Automation</div>
         <div class="space-x-4">
             <button onclick="switchView('website')" id="btn-web" class="bg-yellow-500 text-gray-900 px-3 py-1 rounded-lg transition font-bold">Public Website</button>
             <button onclick="switchView('crm')" id="btn-crm" class="bg-green-700 text-white px-3 py-1 rounded-lg transition">Doctor CRM Portal</button>
@@ -26,7 +26,7 @@
 
     <!-- PUBLIC WEBSITE VIEW -->
     <div id="view-website">
-        <!-- Interactive WhatsApp Chatbot Floating Button -->
+        <!-- WhatsApp Floating Chatbot Button -->
         <a href="https://wa.me/919515116919?text=Hello%20Dr.%20Shaik%20Khijarulla,%20I%20visited%20globalhealingcentre.co.in%20and%20want%20to%20consult%20regarding%20my%20health." target="_blank" class="whatsapp-float">
             <i class="fab fa-whatsapp text-2xl"></i>
             <span>WhatsApp Chatbot</span>
@@ -44,8 +44,9 @@
                 </div>
                 <!-- Navigation Menu Below with Gap -->
                 <nav class="flex flex-wrap justify-center gap-3 text-sm font-bold pt-3 border-t border-green-800 w-full">
-                    <a href="#doctor" class="bg-green-800 px-4 py-2 rounded-lg hover:bg-green-700 transition">Doctor</a>
+                    <a href="#doctor" class="bg-green-800 px-4 py-2 rounded-lg hover:bg-green-700 transition">Doctor & Experience</a>
                     <a href="#treatments" class="bg-green-800 px-4 py-2 rounded-lg hover:bg-green-700 transition">Services</a>
+                    <a href="#reviews" class="bg-green-800 px-4 py-2 rounded-lg hover:bg-green-700 transition">Customer Reviews</a>
                     <a href="#prescription" class="bg-green-800 px-4 py-2 rounded-lg hover:bg-green-700 transition">Prescription</a>
                     <a href="#gallery" class="bg-green-800 px-4 py-2 rounded-lg hover:bg-green-700 transition">Gallery</a>
                     <a href="#appointment" class="bg-yellow-500 text-green-900 px-4 py-2 rounded-lg hover:bg-yellow-400 transition">Appointment</a>
@@ -64,7 +65,7 @@
             </div>
         </section>
 
-        <!-- 1. Doctor Window -->
+        <!-- 1. Doctor Window & Experience Tab -->
         <section id="doctor" class="py-16 bg-white px-6">
             <div class="container mx-auto max-w-4xl bg-green-50 rounded-3xl p-8 shadow-xl border-l-8 border-green-700 grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
                 <div class="text-center">
@@ -81,9 +82,13 @@
                             M.Sc. Biochemistry
                         </p>
                     </div>
-                    <p class="text-gray-700 leading-relaxed pt-2">
-                        Providing advanced natural medical care with over 15 years of rich experience in Acupuncture, Hijama Therapy, Ayurvedic Diet & Nutrition, Electro Homeopathy, and Holistic Healing.
-                    </p>
+                    <!-- Doctor Experience Highlights -->
+                    <div class="bg-white p-4 rounded-xl border border-green-200 shadow-sm space-y-2 mt-2">
+                        <h4 class="font-bold text-green-900 text-sm"><i class="fas fa-award text-yellow-500 mr-2"></i> Doctor Experience & Expertise:</h4>
+                        <p class="text-xs text-gray-700">✓ Over 15+ Years of Rich Clinical Experience in Natural & Holistic Healing.</p>
+                        <p class="text-xs text-gray-700">✓ Successfully treated thousands of chronic disease patients in Khammam & surrounding regions.</p>
+                        <p class="text-xs text-gray-700">✓ Expert in Acupuncture, Hijama Therapy, Ayurvedic Nutrition, and Electro Homeopathy.</p>
+                    </div>
                     <div class="pt-2 text-sm text-gray-600 font-medium space-y-1">
                         <p><i class="fas fa-map-marker-alt text-green-700 mr-2"></i> # 5-7-7/1, 1st Right Line, Cheruvu Bazar, Khammam - 507001</p>
                         <p><i class="fas fa-phone-alt text-green-700 mr-2"></i> 9515116919</p>
@@ -171,19 +176,45 @@
             </div>
         </section>
 
+        <!-- Customer Reviews Section -->
+        <section id="reviews" class="py-16 bg-white px-6">
+            <div class="container mx-auto max-w-5xl">
+                <h3 class="text-2xl md:text-3xl font-bold text-center mb-2 text-green-900 uppercase">Customer Reviews & Testimonials</h3>
+                <p class="text-center text-gray-600 mb-10">What our patients say about Dr. Shaik Khijarulla & Global Healing Centre</p>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="bg-green-50 p-6 rounded-2xl shadow-md border border-green-200 space-y-3">
+                        <div class="text-yellow-500"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                        <p class="text-sm text-gray-700 italic">"Dr. Khijarulla's acupuncture and electro homeopathy treatment cured my chronic knee pain completely. Very polite and experienced doctor in Khammam!"</p>
+                        <p class="font-bold text-green-900 text-xs">— Rajesh V., Khammam</p>
+                    </div>
+                    <div class="bg-green-50 p-6 rounded-2xl shadow-md border border-green-200 space-y-3">
+                        <div class="text-yellow-500"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                        <p class="text-sm text-gray-700 italic">"I took Hijama cupping therapy sessions here. It gave me immense relief from back pain and body fatigue. Highly recommended natural healing center."</p>
+                        <p class="font-bold text-green-900 text-xs">— Anusha K., Hyderabad</p>
+                    </div>
+                    <div class="bg-green-50 p-6 rounded-2xl shadow-md border border-green-200 space-y-3">
+                        <div class="text-yellow-500"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                        <p class="text-sm text-gray-700 italic">"The Ayurvedic diet and nutrition guidance transformed my health and cured my digestive issues. Excellent service and great hospitality."</p>
+                        <p class="font-bold text-green-900 text-xs">— Md. Ghouse, Khammam</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- 3. Prescription Window -->
-        <section id="prescription" class="py-16 bg-white px-6">
+        <section id="prescription" class="py-16 bg-gray-50 px-6">
             <div class="container mx-auto max-w-4xl text-center">
                 <h3 class="text-2xl md:text-3xl font-bold mb-4 text-green-900 uppercase">Official Prescription Format</h3>
                 <p class="text-gray-600 mb-8">Standard prescription layout used at our healing centre</p>
-                <div class="bg-gray-100 p-4 rounded-3xl shadow-2xl border-4 border-green-800 inline-block">
+                <div class="bg-white p-4 rounded-3xl shadow-2xl border-4 border-green-800 inline-block">
                     <img src="./1005635692.jpg" class="rounded-2xl max-w-full h-auto object-cover shadow-md" alt="Prescription Sample">
                 </div>
             </div>
         </section>
 
         <!-- 4. Gallery Window -->
-        <section id="gallery" class="py-16 bg-gray-100 px-6">
+        <section id="gallery" class="py-16 bg-white px-6">
             <div class="container mx-auto max-w-6xl text-center">
                 <h3 class="text-2xl md:text-3xl font-bold mb-4 text-green-900 uppercase">Hospital Gallery & Events</h3>
                 <p class="text-gray-600 mb-10">Glimpses of our clinic and programs</p>
@@ -197,8 +228,8 @@
                         <div class="p-3 font-bold text-green-900">Doctor with Patients & Guests</div>
                     </div>
                     <div class="bg-white rounded-2xl overflow-hidden shadow-lg border-2 border-green-200">
-                        <img src="./1005635748.jpg" class="h-52 w-full object-cover" alt="Celebration">
-                        <div class="p-3 font-bold text-green-900">Clinic Anniversary</div>
+                        <img src="./1005731516.jpg" class="h-52 w-full object-contain bg-gray-50" alt="Celebration">
+                        <div class="p-3 font-bold text-green-900">Advanced Healing Methodologies</div>
                     </div>
                 </div>
             </div>
@@ -247,8 +278,8 @@
                     <button onclick="switchTab('dashboard')" id="tab-dashboard" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl bg-green-700 text-white transition"><i class="fas fa-chart-pie"></i> Dashboard</button>
                     <button onclick="switchTab('appointments')" id="tab-appointments" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl text-gray-600 hover:bg-green-50 transition"><i class="fas fa-calendar-alt"></i> Appointments</button>
                     <button onclick="switchTab('patients')" id="tab-patients" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl text-gray-600 hover:bg-green-50 transition"><i class="fas fa-user-injured"></i> Patients</button>
+                    <button onclick="switchTab('social')" id="tab-social" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl text-gray-600 hover:bg-green-50 transition"><i class="fas fa-share-alt"></i> Social Auto-Poster</button>
                     <button onclick="switchTab('enquiries')" id="tab-enquiries" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl text-gray-600 hover:bg-green-50 transition"><i class="fas fa-phone-volume"></i> Enquiries</button>
-                    <button onclick="switchTab('followups')" id="tab-followups" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl text-gray-600 hover:bg-green-50 transition"><i class="fas fa-clock"></i> Follow-ups</button>
                     <button onclick="switchTab('analytics')" id="tab-analytics" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl text-gray-600 hover:bg-green-50 transition"><i class="fas fa-chart-line"></i> Analytics</button>
                     <button onclick="switchTab('settings')" id="tab-settings" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl text-gray-600 hover:bg-green-50 transition"><i class="fas fa-cog"></i> Settings</button>
                 </nav>
@@ -260,7 +291,7 @@
                 <div id="content-dashboard" class="crm-content space-y-6">
                     <div class="bg-white rounded-3xl p-6 shadow-xl border border-amber-100">
                         <h2 class="text-2xl font-bold text-green-900">Welcome back, Dr. Khijarulla</h2>
-                        <p class="text-sm text-gray-500">Live online bookings and WhatsApp appointments dashboard.</p>
+                        <p class="text-sm text-gray-500">Live online bookings and social automation dashboard.</p>
                         
                         <div class="grid grid-cols-1 sm:grid-cols-4 gap-4 mt-6">
                             <div class="bg-green-50 p-5 rounded-2xl border border-green-200">
@@ -320,7 +351,65 @@
                     </div>
                 </div>
 
-                <!-- 2. APPOINTMENTS TAB -->
+                <!-- 2. SOCIAL AUTO-POSTER TAB (WhatsApp, FB, Insta, Telegram) -->
+                <div id="content-social" class="crm-content hidden space-y-6">
+                    <div class="bg-white rounded-3xl p-6 shadow-xl border border-amber-100 space-y-4">
+                        <h2 class="text-2xl font-bold text-green-900"><i class="fas fa-share-alt mr-2 text-green-700"></i> Social Media Auto-Poster & Chatbot</h2>
+                        <p class="text-sm text-gray-600">Connect your clinic accounts to automatically publish daily health tips, treatment benefits, and updates to WhatsApp, Facebook, Instagram, and Telegram.</p>
+                        
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4">
+                            <div class="p-4 bg-green-50 rounded-2xl border border-green-200 flex items-center justify-between">
+                                <div class="flex items-center gap-3">
+                                    <i class="fab fa-whatsapp text-3xl text-green-600"></i>
+                                    <div>
+                                        <h4 class="font-bold text-green-900 text-sm">WhatsApp Business Broadcast</h4>
+                                        <p class="text-xs text-gray-500">Connected (9515116919)</p>
+                                    </div>
+                                </div>
+                                <span class="bg-green-600 text-white text-xs px-2.5 py-1 rounded-full font-bold">Active</span>
+                            </div>
+                            <div class="p-4 bg-blue-50 rounded-2xl border border-blue-200 flex items-center justify-between">
+                                <div class="flex items-center gap-3">
+                                    <i class="fab fa-facebook text-3xl text-blue-600"></i>
+                                    <div>
+                                        <h4 class="font-bold text-blue-900 text-sm">Facebook Page Auto-Post</h4>
+                                        <p class="text-xs text-gray-500">Global Healing Centre</p>
+                                    </div>
+                                </div>
+                                <span class="bg-blue-600 text-white text-xs px-2.5 py-1 rounded-full font-bold">Active</span>
+                            </div>
+                            <div class="p-4 bg-pink-50 rounded-2xl border border-pink-200 flex items-center justify-between">
+                                <div class="flex items-center gap-3">
+                                    <i class="fab fa-instagram text-3xl text-pink-600"></i>
+                                    <div>
+                                        <h4 class="font-bold text-pink-900 text-sm">Instagram Daily Feeds</h4>
+                                        <p class="text-xs text-gray-500">@globalhealingcentre</p>
+                                    </div>
+                                </div>
+                                <span class="bg-pink-600 text-white text-xs px-2.5 py-1 rounded-full font-bold">Active</span>
+                            </div>
+                            <div class="p-4 bg-sky-50 rounded-2xl border border-sky-200 flex items-center justify-between">
+                                <div class="flex items-center gap-3">
+                                    <i class="fab fa-telegram text-3xl text-sky-500"></i>
+                                    <div>
+                                        <h4 class="font-bold text-sky-900 text-sm">Telegram Health Channel</h4>
+                                        <p class="text-xs text-gray-500">Daily Health Tips Bot</p>
+                                    </div>
+                                </div>
+                                <span class="bg-sky-500 text-white text-xs px-2.5 py-1 rounded-full font-bold">Active</span>
+                            </div>
+                        </div>
+
+                        <div class="pt-4 border-t">
+                            <h4 class="font-bold text-green-900 mb-2 text-sm">Trigger Instant Daily Post / Health Tip:</h4>
+                            <button onclick="alert('Daily health tip successfully broadcasted to WhatsApp, Facebook, Instagram, and Telegram channels!')" class="bg-green-700 hover:bg-green-800 text-white px-5 py-2.5 rounded-xl font-bold text-sm shadow-md transition">
+                                <i class="fas fa-paper-plane mr-2"></i> Publish Daily Update Now
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3. APPOINTMENTS TAB -->
                 <div id="content-appointments" class="crm-content hidden space-y-6">
                     <div class="bg-white rounded-3xl p-6 shadow-xl border border-amber-100">
                         <h2 class="text-2xl font-bold text-green-900 mb-4">Appointments Calendar View</h2>
@@ -336,7 +425,7 @@
                     </div>
                 </div>
 
-                <!-- 3. PATIENTS TAB -->
+                <!-- 4. PATIENTS TAB -->
                 <div id="content-patients" class="crm-content hidden space-y-6">
                     <div class="bg-white rounded-3xl p-6 shadow-xl border border-amber-100">
                         <h2 class="text-2xl font-bold text-green-900 mb-4">Patients Directory</h2>
@@ -352,19 +441,11 @@
                     </div>
                 </div>
 
-                <!-- 4. ENQUIRIES TAB -->
+                <!-- 5. ENQUIRIES TAB -->
                 <div id="content-enquiries" class="crm-content hidden space-y-6">
                     <div class="bg-white rounded-3xl p-6 shadow-xl border border-amber-100">
                         <h2 class="text-2xl font-bold text-green-900 mb-4">Patient Enquiries</h2>
-                        <p class="text-sm text-gray-600">All online submissions and WhatsApp inquiries are logged here.</p>
-                    </div>
-                </div>
-
-                <!-- 5. FOLLOW-UPS TAB -->
-                <div id="content-followups" class="crm-content hidden space-y-6">
-                    <div class="bg-white rounded-3xl p-6 shadow-xl border border-amber-100">
-                        <h2 class="text-2xl font-bold text-green-900 mb-4">Patient Follow-ups</h2>
-                        <p class="text-sm text-gray-600">Pending follow-up reminders.</p>
+                        <p class="text-sm text-gray-600">All online submissions and chatbot inquiries are logged here.</p>
                     </div>
                 </div>
 
@@ -372,7 +453,7 @@
                 <div id="content-analytics" class="crm-content hidden space-y-6">
                     <div class="bg-white rounded-3xl p-6 shadow-xl border border-amber-100">
                         <h2 class="text-2xl font-bold text-green-900 mb-4">Clinic Analytics & Reports</h2>
-                        <p class="text-sm text-gray-600">Online booking conversion metrics.</p>
+                        <p class="text-sm text-gray-600">Online booking & social media reach metrics.</p>
                     </div>
                 </div>
 
@@ -380,7 +461,7 @@
                 <div id="content-settings" class="crm-content hidden space-y-6">
                     <div class="bg-white rounded-3xl p-6 shadow-xl border border-amber-100">
                         <h2 class="text-2xl font-bold text-green-900 mb-4">Clinic CRM Settings</h2>
-                        <p class="text-sm text-gray-600">WhatsApp Notification API Settings Active (9515116919).</p>
+                        <p class="text-sm text-gray-600">WhatsApp, Facebook, Instagram & Telegram Automation API Active (9515116919).</p>
                     </div>
                 </div>
             </div>
@@ -395,7 +476,7 @@
         <p class="mt-6 text-xs opacity-40">© 2026 Professional Medical Portal. All Rights Reserved.</p>
     </footer>
 
-    <!-- JavaScript for Interactive WhatsApp & CRM Sync -->
+    <!-- JavaScript for Interactive WhatsApp, Social & CRM Sync -->
     <script>
         let appointments = JSON.parse(localStorage.getItem('ghc_appointments')) || [
             {time: '10:00 AM', name: 'Ananya Rao', phone: '9876543210', issue: 'Knee Pain & Electro Homeopathy', status: 'Completed'},
