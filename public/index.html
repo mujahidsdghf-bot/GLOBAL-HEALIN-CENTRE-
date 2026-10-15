@@ -26,10 +26,10 @@
 
     <!-- PUBLIC WEBSITE VIEW -->
     <div id="view-website">
-        <!-- WhatsApp Floating Button -->
-        <a href="https://wa.me/919515116919?text=Hello%20Dr.%20Khizar,%20I%20want%20to%20book%20an%20appointment." target="_blank" class="whatsapp-float">
+        <!-- WhatsApp Floating Chatbot Button -->
+        <a href="https://wa.me/919515116919?text=Hello%20Dr.%20Khizar,%20I%20want%20to%20chat%20regarding%20my%20health." target="_blank" class="whatsapp-float">
             <i class="fab fa-whatsapp text-2xl"></i>
-            <span>WhatsApp Chat</span>
+            <span>WhatsApp Chatbot</span>
         </a>
 
         <!-- Header with Logo -->
@@ -67,7 +67,7 @@
         <section id="doctor" class="py-16 bg-white px-6">
             <div class="container mx-auto max-w-4xl bg-green-50 rounded-3xl p-8 shadow-xl border-l-8 border-green-700 grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
                 <div class="text-center">
-                    <img src="./doctor.jpg" onerror="this.src='https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&w=400&q=80'" class="w-48 h-48 rounded-2xl mx-auto object-cover shadow-lg border-4 border-white" alt="Dr. Shaik Khijarulla">
+                    <img src="./1005726179.jpg" onerror="this.src='./doctor.jpg'" class="w-48 h-48 rounded-2xl mx-auto object-cover shadow-lg border-4 border-white" alt="Dr. Shaik Khijarulla">
                 </div>
                 <div class="md:col-span-2 space-y-3">
                     <span class="bg-yellow-500 text-green-900 text-xs font-bold px-3 py-1 rounded-full uppercase">Chief Physician</span>
@@ -115,18 +115,19 @@
                     </div>
                 </div>
 
+                <!-- Updated Therapy Posters matching user uploaded filenames -->
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
                     <div class="bg-white rounded-2xl overflow-hidden shadow-lg border-2 border-green-200">
-                        <img src="./1005726172.jpg" onerror="this.src='./1005635705.jpg'" class="h-48 w-full object-cover" alt="Acupuncture Benefits">
-                        <div class="p-4 font-bold text-green-900 text-center">Acupuncture Healing Power</div>
+                        <img src="./1005731516.jpg" class="h-64 w-full object-cover" alt="Electro Homeopathy">
+                        <div class="p-4 font-bold text-green-900 text-center">Electro Homeopathy</div>
                     </div>
                     <div class="bg-white rounded-2xl overflow-hidden shadow-lg border-2 border-green-200">
-                        <img src="./1005635705-1.jpg" class="h-48 w-full object-cover" alt="Hijama Therapy">
+                        <img src="./1005731524.jpg" class="h-64 w-full object-cover" alt="Ayurvedic Diet & Nutrition">
+                        <div class="p-4 font-bold text-green-900 text-center">Ayurvedic Diet & Nutrition</div>
+                    </div>
+                    <div class="bg-white rounded-2xl overflow-hidden shadow-lg border-2 border-green-200">
+                        <img src="./1005731509.jpg" class="h-64 w-full object-cover" alt="Hijama & Cupping Therapy">
                         <div class="p-4 font-bold text-green-900 text-center">Hijama & Cupping Therapy</div>
-                    </div>
-                    <div class="bg-white rounded-2xl overflow-hidden shadow-lg border-2 border-green-200">
-                        <img src="./1005635705-2.jpg" class="h-48 w-full object-cover" alt="Reflexology">
-                        <div class="p-4 font-bold text-green-900 text-center">Reflexology & Acupressure</div>
                     </div>
                 </div>
 
@@ -181,7 +182,7 @@
             </div>
         </section>
 
-        <!-- 5. Appointment Booking Window with WhatsApp & CRM Sync -->
+        <!-- 5. Appointment Booking & Chatbot Window -->
         <section id="appointment" class="py-16 bg-green-50 px-6 border-t border-green-200">
             <div class="container mx-auto max-w-2xl bg-white p-8 rounded-3xl shadow-xl border-t-4 border-green-700">
                 <h3 class="text-2xl font-bold text-center mb-2 text-green-900 uppercase">Book an Appointment Online</h3>
@@ -237,7 +238,7 @@
                 <div id="content-dashboard" class="crm-content space-y-6">
                     <div class="bg-white rounded-3xl p-6 shadow-xl border border-amber-100">
                         <h2 class="text-2xl font-bold text-green-900">Welcome back, Dr. Khijarulla</h2>
-                        <p class="text-sm text-gray-500">Live online bookings and WhatsApp appointments dashboard[span_0](start_span)[span_0](end_span)[span_1](start_span)[span_1](end_span).</p>
+                        <p class="text-sm text-gray-500">Live online bookings and WhatsApp appointments dashboard.</p>
                         
                         <div class="grid grid-cols-1 sm:grid-cols-4 gap-4 mt-6">
                             <div class="bg-green-50 p-5 rounded-2xl border border-green-200">
@@ -259,7 +260,7 @@
                         </div>
                     </div>
 
-                    <!-- Live Appointments Table (Auto-updates when user books online) -->
+                    <!-- Live Appointments Table -->
                     <div class="bg-white rounded-3xl p-6 shadow-xl border border-amber-100">
                         <div class="flex justify-between items-center mb-4">
                             <h3 class="text-lg font-bold text-green-900">Live Online & WhatsApp Bookings</h3>
@@ -279,17 +280,17 @@
                                 <tbody id="live-appointments-table" class="divide-y text-gray-700">
                                     <tr>
                                         <td class="p-3 font-bold text-green-900">10:00 AM</td>
-                                        <td class="p-3">Ananya Rao[span_2](start_span)[span_2](end_span)</td>
+                                        <td class="p-3">Ananya Rao</td>
                                         <td class="p-3">9876543210</td>
-                                        <td class="p-3">Knee Pain & Acupuncture</td>
-                                        <td class="p-3"><span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full font-bold">Completed[span_3](start_span)[span_3](end_span)</span></td>
+                                        <td class="p-3">Knee Pain & Electro Homeopathy</td>
+                                        <td class="p-3"><span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full font-bold">Completed</span></td>
                                     </tr>
                                     <tr>
                                         <td class="p-3 font-bold text-green-900">10:30 AM</td>
-                                        <td class="p-3">Rahul Chavan[span_4](start_span)[span_4](end_span)[span_5](start_span)[span_5](end_span)</td>
-                                        <td class="p-3">9561214824[span_6](start_span)[span_6](end_span)</td>
+                                        <td class="p-3">Rahul Chavan</td>
+                                        <td class="p-3">9561214824</td>
                                         <td class="p-3">Chronic Liver Disorder</td>
-                                        <td class="p-3"><span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full font-bold">Confirmed[span_7](start_span)[span_7](end_span)</span></td>
+                                        <td class="p-3"><span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full font-bold">Confirmed</span></td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -305,8 +306,8 @@
                             <div class="p-4 bg-amber-50 rounded-2xl border">
                                 <h4 class="font-bold text-green-900">Today's Schedule</h4>
                                 <div id="calendar-list" class="mt-2 text-xs space-y-1">
-                                    <div>10:00 AM - Ananya Rao (Completed)[span_8](start_span)[span_8](end_span)</div>
-                                    <div>10:30 AM - Rahul Chavan (Confirmed)[span_9](start_span)[span_9](end_span)[span_10](start_span)[span_10](end_span)</div>
+                                    <div>10:00 AM - Ananya Rao (Completed)</div>
+                                    <div>10:30 AM - Rahul Chavan (Confirmed)</div>
                                 </div>
                             </div>
                         </div>
@@ -320,8 +321,8 @@
                         <div id="patients-list" class="space-y-3">
                             <div class="p-4 bg-gray-50 rounded-2xl flex justify-between items-center border">
                                 <div>
-                                    <h4 class="font-bold text-green-900">Rahul Chavan <span class="text-xs bg-green-100 text-green-800 px-2 py-0.5 rounded-full">New Patient[span_11](start_span)[span_11](end_span)</span></h4>
-                                    <p class="text-xs text-gray-500">Phone: 9561214824[span_12](start_span)[span_12](end_span)</p>
+                                    <h4 class="font-bold text-green-900">Rahul Chavan <span class="text-xs bg-green-100 text-green-800 px-2 py-0.5 rounded-full">New Patient</span></h4>
+                                    <p class="text-xs text-gray-500">Phone: 9561214824</p>
                                 </div>
                                 <span class="text-xs text-gray-600 font-semibold">Active</span>
                             </div>
@@ -374,9 +375,8 @@
 
     <!-- JavaScript for Interactive WhatsApp & CRM Sync -->
     <script>
-        // Load stored appointments from browser storage if any
         let appointments = JSON.parse(localStorage.getItem('ghc_appointments')) || [
-            {time: '10:00 AM', name: 'Ananya Rao', phone: '9876543210', issue: 'Knee Pain & Acupuncture', status: 'Completed'},
+            {time: '10:00 AM', name: 'Ananya Rao', phone: '9876543210', issue: 'Knee Pain & Electro Homeopathy', status: 'Completed'},
             {time: '10:30 AM', name: 'Rahul Chavan', phone: '9561214824', issue: 'Chronic Liver Disorder', status: 'Confirmed'}
         ];
 
@@ -400,7 +400,6 @@
             document.getElementById('stat-total').innerText = appointments.length;
         }
 
-        // Run on load
         window.onload = renderCRMData;
 
         function switchView(view) {
@@ -435,7 +434,6 @@
             const issue = document.getElementById('issue').value;
             const timeNow = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
 
-            // 1. Add to CRM Data Array & Save
             appointments.push({
                 time: timeNow,
                 name: name,
@@ -445,14 +443,12 @@
             });
             localStorage.setItem('ghc_appointments', JSON.stringify(appointments));
 
-            // 2. Open WhatsApp with pre-filled booking details to Dr. Khijarulla
             const whatsappMessage = `Hello Dr. Shaik Khijarulla,%0AI want to book an online appointment.%0A%0AName: ${name}%0APhone: ${phone}%0AIssue/Treatment: ${issue}`;
             const whatsappUrl = `https://wa.me/919515116919?text=${whatsappMessage}`;
             
             alert('Appointment successfully booked online and synced to your CRM Dashboard! Redirecting to WhatsApp...');
             window.open(whatsappUrl, '_blank');
 
-            // Reset Form
             event.target.reset();
             renderCRMData();
         }
