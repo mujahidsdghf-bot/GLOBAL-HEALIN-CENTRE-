@@ -20,16 +20,16 @@ app.post('/api/book-appointment', (req, res) => {
     const { name, phone, issue } = req.body;
     console.log(`New Appointment Received -> Name: ${name}, Phone: ${phone}, Issue: ${issue}`);
     
-    // ఇక్కడ మనం డేటాబేస్ లో సేవ్ చేసుకోవచ్చు లేదా వాట్సాప్ నోటిఫికేషన్ పంపవచ్చు
     res.json({ success: true, message: 'Appointment booked successfully!' });
 });
 
 // ==========================================
-// టెలిగ్రామ్ & సోషల్ మీడియా ఆటో-పోస్టర్
+// టెలిగ్రామ్ & సోషల్ మీడియా ఆటో-పోస్టర్ (ఫోటో + హెల్త్ టిప్స్)
 // ==========================================
 const TELEGRAM_BOT_TOKEN = '8638874544:AAGWvGPJ1wmHmLX9UYyfJc_B1Ff1bcxStAY';
 const TELEGRAM_CHAT_ID = '@globalhealingcentre'; // మీ టెలిగ్రామ్ ఛానెల్ యూజర్‌నేమ్
 
+// డైలీ హెల్త్ టిప్స్ జాబితా
 const dailyHealthTips = [
     "🌿 Global Healing Centre Tip: Drink warm water early in the morning to boost metabolism and detoxify your kidneys. Contact Dr. Shaik Khijarulla at 9515116919.",
     "🌿 Acupuncture & Pain Relief: Natural healing is the best way to cure chronic joint and knee pains without side effects. Visit us at Cheruvu Bazar, Khammam.",
@@ -39,33 +39,50 @@ const dailyHealthTips = [
     "🌿 Acupressure & Reflexology: Stimulate natural healing points on your hands and feet for instant stress relief and pain management."
 ];
 
+// మన దగ్గరున్న క్లినిక్ పోస్టర్ల జాబితా (ఆటోమేటిక్‌గా ఫోటోలు పోస్ట్ కావడానికి)
+const healthPosters = [
+    'https://globalhealingcentre.co.in/1005731516.jpg', // Electro Homeopathy
+    'https://globalhealingcentre.co.in/1005731524.jpg', // Ayurvedic Diet
+    'https://globalhealingcentre.co.in/1005731509.jpg', // Hijama & Cupping
+    'https://globalhealingcentre.co.in/1005635705.jpg'  // Acupuncture
+];
+
 async function sendAutomatedPosts() {
     try {
+        // ఆటోమేటిక్‌గా ఒక హెల్త్ టిప్‌ను, ఒక ఫోటోను సెలెక్ట్ చేయడం
         const randomTip = dailyHealthTips[Math.floor(Math.random() * dailyHealthTips.length)];
-        console.log('Publishing scheduled social media post:', randomTip);
+        const randomPhoto = healthPosters[Math.floor(Math.random() * healthPosters.length)];
 
-        // 1. Telegram Bot API ద్వారా ఆటోమేటిక్ పోస్ట్
-        const telegramUrl = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`;
+        console.log('Sending scheduled Telegram post with photo...');
+
+        // టెలిగ్రామ్ బోట్ ద్వారా ఆటోమేటిక్ ఫోటో + టెక్స్ట్ పంపడం
+        const telegramUrl = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendPhoto`;
         await axios.post(telegramUrl, {
             chat_id: TELEGRAM_CHAT_ID,
-            text: randomTip
+            photo: randomPhoto,
+            caption: randomTip
         });
-        console.log('Successfully posted to Telegram Channel!');
 
-        // 2. WhatsApp Broadcast API Integration (భవిష్యత్తులో API టోకెన్ వచ్చినప్పుడు వాడవచ్చు)
-        // await axios.post('https://api.whatsapp.com/send', { phone: '9515116919', message: randomTip });
-
-        // 3. Facebook / Instagram Graph API Integration (భవిష్యత్తులో టోకెన్ వచ్చినప్పుడు వాడవచ్చు)
-        // await axios.post('https://graph.facebook.com/v17.0/YOUR_PAGE_ID/feed', { message: randomTip, access_token: 'YOUR_FB_TOKEN' });
+        console.log('Successfully posted photo and tip to Telegram Channel!');
 
     } catch (error) {
-        console.error('Error in automated social posting:', error.response?.data || error.message);
+        console.error('Error in automated Telegram posting:', error.response?.data || error.message);
     }
 }
 
-// రోజుకు 4 సార్లు ఆటోమేటిక్‌గా పోస్ట్ అవ్వడానికి షెడ్యూల్ (ఉదయం 9, మధ్యాహ్నం 1, సాయంత్రం 5, రాత్రి 8 గంటలకు)
-cron.schedule('0 9,13,17,20 * * *', () => {
+// 1. రోజుకు 8 సార్లు ఆటోమేటిక్‌గా పోస్ట్ అవ్వడానికి షెడ్యూల్ (ఉదయం 8, 10, మధ్యాహ్నం 12, 2, సాయంత్రం 4, 6, రాత్రి 8, 10 గంటలకు)
+cron.schedule('0 8,10,12,14,16,18,20,22 * * *', () => {
     sendAutomatedPosts();
+});
+
+// 2. వెంటనే పోస్ట్ వెళ్తుందో లేదో చెక్ చేయడానికి టెస్ట్ లింక్ (Browser లో https://globalhealingcentre.co.in/api/test-telegram అని టైప్ చేయండి)
+app.get('/api/test-telegram', async (req, res) => {
+    try {
+        await sendAutomatedPosts();
+        res.json({ success: true, message: 'Test Telegram photo post sent successfully!' });
+    } catch (error) {
+        res.json({ success: false, error: error.message });
+    }
 });
 
 app.listen(PORT, () => {
