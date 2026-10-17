@@ -24,10 +24,16 @@ app.post('/api/book-appointment', (req, res) => {
 });
 
 // ==========================================
-// టెలిగ్రామ్ & సోషల్ మీడియా ఆటో-పోస్టర్ (ఫోటో + హెల్త్ టిప్స్)
+// టెలిగ్రామ్ & ఫేస్‌బుక్ సోషల్ మీడియా ఆటో-పోస్టర్
 // ==========================================
+
+// 1. టెలిగ్రామ్ కాన్ఫిగరేషన్
 const TELEGRAM_BOT_TOKEN = '8638874544:AAGWvGPJ1wmHmLX9UYyfJc_B1Ff1bcxStAY';
-const TELEGRAM_CHAT_ID = '@globalhealingcentre'; // మీ టెలిగ్రామ్ ఛానెల్ యూజర్‌నేమ్
+const TELEGRAM_CHAT_ID = '@globalhealingcentre';
+
+// 2. ఫేస్‌బుక్ కాన్ఫిగరేషన్
+const PAGE_ID = '10804594488354';
+const PAGE_ACCESS_TOKEN = 'EAAXxE1AdEygBS7tciKCHjJ6K8WycPaVeosZAT9ulPfSQGciyE54N7gZCD7y8FrPyuI1GFSA7dGBnLhSZC4OATAZCCgVBUGQUv3bmlOgS4DCkeREc2bz6azQwIHkBqqSlYbKKFRLZAw6ihwIqeBtxBtnnbnU3rVPEorZAXbEPCY53x0UyVRWSIl5jcL0Qkw8KZCQ3PtxnZCMFwHbKyHJnRhv0FkGkSZAt6JxNp7fg343YayqRCdf97NLH5Wy8mJAcGLFn151qTjfwtxA9bxZChpjmRaYlYo';
 
 // డైలీ హెల్త్ టిప్స్ జాబితా
 const dailyHealthTips = [
@@ -39,7 +45,7 @@ const dailyHealthTips = [
     "🌿 Acupressure & Reflexology: Stimulate natural healing points on your hands and feet for instant stress relief and pain management."
 ];
 
-// మన దగ్గరున్న క్లినిక్ పోస్టర్ల జాబితా (ఆటోమేటిక్‌గా ఫోటోలు పోస్ట్ కావడానికి)
+// క్లినిక్ పోస్టర్ల జాబితా
 const healthPosters = [
     'https://globalhealingcentre.co.in/1005731516.jpg', // Electro Homeopathy
     'https://globalhealingcentre.co.in/1005731524.jpg', // Ayurvedic Diet
@@ -47,26 +53,53 @@ const healthPosters = [
     'https://globalhealingcentre.co.in/1005635705.jpg'  // Acupuncture
 ];
 
-async function sendAutomatedPosts() {
+// టెలిగ్రామ్‌కి పోస్ట్ చేసే ఫంక్షన్
+async function postToTelegram(tip, photoUrl) {
     try {
-        // ఆటోమేటిక్‌గా ఒక హెల్త్ టిప్‌ను, ఒక ఫోటోను సెలెక్ట్ చేయడం
-        const randomTip = dailyHealthTips[Math.floor(Math.random() * dailyHealthTips.length)];
-        const randomPhoto = healthPosters[Math.floor(Math.random() * healthPosters.length)];
-
-        console.log('Sending scheduled Telegram post with photo...');
-
-        // టెలిగ్రామ్ బోట్ ద్వారా ఆటోమేటిక్ ఫోటో + టెక్స్ట్ పంపడం
         const telegramUrl = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendPhoto`;
         await axios.post(telegramUrl, {
             chat_id: TELEGRAM_CHAT_ID,
-            photo: randomPhoto,
-            caption: randomTip
+            photo: photoUrl,
+            caption: tip
         });
-
         console.log('Successfully posted photo and tip to Telegram Channel!');
+    } catch (err) {
+        console.error('Telegram Post Error:', err.response?.data || err.message);
+    }
+}
 
+// ఫేస్‌బుక్‌కి పోస్ట్ చేసే ఫంక్షన్
+async function postToFacebook(tip, photoUrl) {
+    try {
+        const facebookUrl = `https://graph.facebook.com/v20.0/${PAGE_ID}/photos`;
+        await axios.post(facebookUrl, {
+            url: photoUrl,
+            caption: tip,
+            access_token: PAGE_ACCESS_TOKEN
+        });
+        console.log('Successfully posted photo and tip to Facebook Page!');
+    } catch (err) {
+        console.error('Facebook Post Error:', err.response ? err.response.data : err.message);
+    }
+}
+
+// రెండు ప్లాట్‌ఫారమ్‌లకూ కలిపి ఆటో-పోస్ట్ ట్రిగర్ చేసే మెయిన్ ఫంక్షన్
+async function sendAutomatedPosts() {
+    try {
+        const randomTip = dailyHealthTips[Math.floor(Math.random() * dailyHealthTips.length)];
+        const randomPhoto = healthPosters[Math.floor(Math.random() * healthPosters.length)];
+
+        console.log('Starting automated social media posting (Telegram & Facebook)...');
+
+        // రెండింటికీ సమాంతరంగా పంపడం
+        await Promise.all([
+            postToTelegram(randomTip, randomPhoto),
+            postToFacebook(randomTip, randomPhoto)
+        ]);
+
+        console.log('All scheduled social media posts completed successfully!');
     } catch (error) {
-        console.error('Error in automated Telegram posting:', error.response?.data || error.message);
+        console.error('Error in automated posting routine:', error.message);
     }
 }
 
@@ -75,11 +108,11 @@ cron.schedule('0 8,10,12,14,16,18,20,22 * * *', () => {
     sendAutomatedPosts();
 });
 
-// 2. వెంటనే పోస్ట్ వెళ్తుందో లేదో చెక్ చేయడానికి టెస్ట్ లింక్ (Browser లో https://globalhealingcentre.co.in/api/test-telegram అని టైప్ చేయండి)
-app.get('/api/test-telegram', async (req, res) => {
+// 2. వెంటనే పోస్ట్ వెళ్తుందో లేదో చెక్ చేయడానికి టెస్ట్ లింక్ (Browser లో /api/test-social అని టైప్ చేయండి)
+app.get('/api/test-social', async (req, res) => {
     try {
         await sendAutomatedPosts();
-        res.json({ success: true, message: 'Test Telegram photo post sent successfully!' });
+        res.json({ success: true, message: 'Test social media posts sent to Telegram and Facebook successfully!' });
     } catch (error) {
         res.json({ success: false, error: error.message });
     }
