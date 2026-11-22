@@ -31,11 +31,12 @@ var CSS=`#ghcv-fab{position:fixed;left:16px;bottom:16px;z-index:1100;display:fle
 #ghcv-f{display:flex;gap:6px}
 #ghcv-t{flex:1;min-width:0;padding:10px;border-radius:10px;border:1px solid #C9D9CF;background:#fff;color:#10302A;font:inherit;font-size:14px}
 #ghcv-f button{padding:0 14px;border-radius:10px;border:0;background:#1F6F5B;color:#fff;font:inherit;font-weight:600;cursor:pointer}
+#ghcv-test{border:1px solid #1F6F5B;background:#fff;color:#10302A;padding:7px 14px;border-radius:999px;font:inherit;font-size:13px;cursor:pointer}
 #ghcv-panel .note{font-size:12px;color:#4F6B63;margin:0}
 #ghcv-panel button:focus-visible,#ghcv-fab:focus-visible,#ghcv-t:focus-visible{outline:3px solid #D69A2D;outline-offset:2px}`;
 var HTML=`<header><strong>Global Healing Centre</strong><button type="button" id="ghcv-close" aria-label="Close">&times;</button></header>
 <div class="lang" role="group" aria-label="Language" id="ghcv-lang"><button type="button" data-l="en" aria-pressed="true">English</button><button type="button" data-l="te" aria-pressed="false">తెలుగు</button><button type="button" data-l="hi" aria-pressed="false">हिन्दी</button></div>
-<div class="stage" aria-live="polite"><button type="button" class="orb" id="ghcv-orb" aria-label="Tap to talk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></button><div id="ghcv-state">Tap to talk</div><div id="ghcv-live"></div><label class="hands"><input type="checkbox" id="ghcv-hands" checked> Keep listening during booking</label></div>
+<div class="stage" aria-live="polite"><button type="button" class="orb" id="ghcv-orb" aria-label="Tap to talk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></button><div id="ghcv-state">Tap to talk</div><div id="ghcv-live"></div><label class="hands"><input type="checkbox" id="ghcv-hands" checked> Keep listening during booking</label><button type="button" id="ghcv-test">\uD83D\uDD0A Test voice / వాయిస్ టెస్ట్</button></div>
 <div id="ghcv-log" aria-label="Conversation"></div>
 <div class="chips" id="ghcv-chips"></div>
 <form id="ghcv-f" autocomplete="off"><input type="text" id="ghcv-t" placeholder="Or type here" aria-label="Type your message"><button type="submit">Send</button></form>
@@ -124,6 +125,7 @@ function hintVoice(){
  if(!vs.length||pickVoice())return;
  hinted[lang]=1;add("bot",SILENT[lang]);
 }
+function unlockTTS(){try{if(window.speechSynthesis){var u=new SpeechSynthesisUtterance(" ");u.volume=0;speechSynthesis.speak(u)}}catch(e){}}
 function stopSpeak(){speakId++;try{speechSynthesis.cancel()}catch(e){}speaking=false}
 function speak(text,after){
  if(!window.speechSynthesis){after&&after();return}
@@ -151,10 +153,10 @@ function speak(text,after){
     if(!silentHint){silentHint=1;add("bot",SILENT[lang])}
     fin();
    }
-  },3000);
+  },4000);
   speechSynthesis.speak(u);
  };
- setTimeout(next,150);
+ setTimeout(next,350);
 }
 function say(key,vars,act){
  var t=R[key][lang];
@@ -216,14 +218,14 @@ function begin(){
  if(!started){started=true;say("greet");return true}
  return false;
 }
-orb.addEventListener("click",function(){
+orb.addEventListener("click",function(){unlockTTS();
  if(speaking){stopSpeak();setState("idle");startListen();return}
  if(listening){stopListen();setState("idle");return}
  if(begin())return;
  startListen();
 });
 $("f").addEventListener("submit",function(e){
- e.preventDefault();var v=$("t").value;$("t").value="";
+ e.preventDefault();unlockTTS();var v=$("t").value;$("t").value="";
  if(!started)started=true;
  handle(v);
 });
@@ -231,7 +233,7 @@ function chips(){
  var c=$("chips");c.textContent="";
  UI[lang].chips.forEach(function(t){
   var b=document.createElement("button");b.type="button";b.textContent=t;
-  b.onclick=function(){started=true;handle(t)};c.appendChild(b);
+  b.onclick=function(){unlockTTS();started=true;handle(t)};c.appendChild(b);
  });
 }
 function setLang(l){
@@ -242,6 +244,19 @@ function setLang(l){
  stopListen();if(window.speechSynthesis)speechSynthesis.cancel();flow=null;
  setState("idle");chips();
 }
+$("test").addEventListener("click",function(){
+ if(!window.speechSynthesis){add("bot","This browser cannot speak. Please use Chrome.");return}
+ var vs=speechSynthesis.getVoices(),m=pickVoice();
+ var info="Voices on phone: "+vs.length+". "+LC[lang]+": "+(m?m.name:"not found");
+ var sample={en:"Hello. This is a voice test.",te:"\u0c28\u0c2e\u0c38\u0c4d\u0c15\u0c3e\u0c30\u0c02. \u0c07\u0c26\u0c3f \u0c35\u0c3e\u0c2f\u0c3f\u0c38\u0c4d \u0c1f\u0c46\u0c38\u0c4d\u0c1f\u0c4d.",hi:"\u0928\u092e\u0938\u094d\u0924\u0947\u0964 \u092f\u0939 \u0935\u0949\u0907\u0938 \u091f\u0947\u0938\u094d\u091f \u0939\u0948\u0964"}[lang];
+ var u=new SpeechSynthesisUtterance(sample),shown=false;
+ u.lang=LC[lang];if(m)u.voice=m;u.volume=1;
+ u.onstart=function(){shown=true;add("bot","\u2705 Voice started. "+info)};
+ u.onerror=function(e){if(!shown){shown=true;add("bot","\u274C Voice error: "+((e&&e.error)||"unknown")+". "+info)}};
+ try{speechSynthesis.cancel()}catch(x){}
+ speechSynthesis.speak(u);
+ setTimeout(function(){if(!shown){shown=true;add("bot","\u274C No sound started. "+info)}},4000);
+});
 $("lang").addEventListener("click",function(e){var b=e.target.closest("button");if(b)setLang(b.dataset.l)});
 if(window.speechSynthesis)speechSynthesis.onvoiceschanged=function(){};
 setLang("en");
