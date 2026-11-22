@@ -116,14 +116,35 @@ function pickVoice(){
  var l=LC[lang].toLowerCase(),b=lang;
  return vs.find(function(v){return v.lang.toLowerCase().replace("_","-")===l})||vs.find(function(v){return v.lang.toLowerCase().indexOf(b)===0})||null;
 }
+var hinted={};
+function hintVoice(){
+ if(lang==="en"||hinted[lang])return;
+ var vs=speechSynthesis.getVoices();
+ if(!vs.length||pickVoice())return;
+ hinted[lang]=1;
+ add("bot",({te:"\u0c2e\u0c40 \u0c2b\u0c4b\u0c28\u0c4d\u200c\u0c32\u0c4b \u0c24\u0c46\u0c32\u0c41\u0c17\u0c41 \u0c35\u0c3e\u0c2f\u0c3f\u0c38\u0c4d \u0c32\u0c47\u0c28\u0c1f\u0c4d\u0c1f\u0c41 \u0c09\u0c02\u0c26\u0c3f. Settings \u2192 Language \u2192 Text-to-speech \u2192 Google \u2192 Install voice data \u2192 Telugu \u0c32\u0c4b \u0c07\u0c28\u0c4d\u200c\u0c38\u0c4d\u0c1f\u0c3e\u0c32\u0c4d \u0c1a\u0c47\u0c2f\u0c02\u0c21\u0c3f.",hi:"\u0906\u092a\u0915\u0947 \u092b\u094b\u0928 \u092e\u0947\u0902 \u0939\u093f\u0902\u0926\u0940 \u0906\u0935\u093e\u091c\u093c \u0928\u0939\u0940\u0902 \u0926\u093f\u0916 \u0930\u0939\u0940\u0964 Settings \u2192 Language \u2192 Text-to-speech \u2192 Google \u2192 Install voice data \u2192 Hindi \u092e\u0947\u0902 \u0907\u0902\u0938\u094d\u091f\u0949\u0932 \u0915\u0930\u0947\u0902\u0964"})[lang]);
+}
 function speak(text,after){
  if(!window.speechSynthesis){after&&after();return}
- stopListen();speechSynthesis.cancel();
- var u=new SpeechSynthesisUtterance(text);u.lang=LC[lang];
- var v=pickVoice();if(v)u.voice=v;u.rate=.95;
- speaking=true;setState("spk");
- var done=false;var fin=function(){if(done)return;done=true;speaking=false;setState(listening?"lis":"idle");after&&after()};
- u.onend=fin;u.onerror=fin;speechSynthesis.speak(u);setTimeout(fin,text.length*110+4000);
+ stopListen();
+ try{if(speechSynthesis.speaking||speechSynthesis.pending)speechSynthesis.cancel()}catch(e){}
+ var parts=text.match(/[^.!?\u0964]+[.!?\u0964]*/g)||[text];
+ var done=false,i=0,v=pickVoice();
+ speaking=true;setState("spk");hintVoice();
+ var fin=function(){if(done)return;done=true;speaking=false;setState(listening?"lis":"idle");after&&after()};
+ var next=function(){
+  if(done)return;
+  if(i>=parts.length){fin();return}
+  var s=parts[i++].trim();if(!s){next();return}
+  var k=i;
+  var u=new SpeechSynthesisUtterance(s);u.lang=LC[lang];if(v)u.voice=v;u.rate=.95;u.volume=1;
+  var wd=setTimeout(function(){if(i===k)next()},s.length*150+2500);
+  var go=function(){clearTimeout(wd);if(i===k)next()};
+  u.onend=go;u.onerror=go;
+  speechSynthesis.speak(u);
+ };
+ setTimeout(next,150);
+ setTimeout(fin,text.length*160+6000);
 }
 function say(key,vars,act){
  var t=R[key][lang];
