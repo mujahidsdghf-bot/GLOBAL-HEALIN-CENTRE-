@@ -116,35 +116,45 @@ function pickVoice(){
  var l=LC[lang].toLowerCase(),b=lang;
  return vs.find(function(v){return v.lang.toLowerCase().replace("_","-")===l})||vs.find(function(v){return v.lang.toLowerCase().indexOf(b)===0})||null;
 }
-var hinted={};
+var hinted={},silentHint=0,speakId=0;
+var SILENT={en:"I could not play sound. Turn up the media volume. For Telugu or Hindi, install the voice in Settings \u2192 Text-to-speech \u2192 Google \u2192 Install voice data.",te:"\u0c36\u0c2c\u0c4d\u0c26\u0c02 \u0c30\u0c3e\u0c32\u0c47\u0c26\u0c41. \u0c2e\u0c40\u0c21\u0c3f\u0c2f\u0c3e \u0c35\u0c3e\u0c32\u0c41\u0c2f\u0c2e\u0c4d \u0c2a\u0c46\u0c02\u0c1a\u0c02\u0c21\u0c3f. Settings \u2192 Text-to-speech \u2192 Google \u2192 Install voice data \u2192 Telugu \u0c07\u0c28\u0c4d\u200c\u0c38\u0c4d\u0c1f\u0c3e\u0c32\u0c4d \u0c1a\u0c47\u0c2f\u0c02\u0c21\u0c3f.",hi:"\u0906\u0935\u093e\u091c\u093c \u0928\u0939\u0940\u0902 \u0906\u0908\u0964 \u092e\u0940\u0921\u093f\u092f\u093e \u0935\u0949\u0932\u094d\u092f\u0942\u092e \u092c\u0922\u093c\u093e\u090f\u0901\u0964 Settings \u2192 Text-to-speech \u2192 Google \u2192 Install voice data \u2192 Hindi \u0907\u0902\u0938\u094d\u091f\u0949\u0932 \u0915\u0930\u0947\u0902\u0964"};
 function hintVoice(){
  if(lang==="en"||hinted[lang])return;
  var vs=speechSynthesis.getVoices();
  if(!vs.length||pickVoice())return;
- hinted[lang]=1;
- add("bot",({te:"\u0c2e\u0c40 \u0c2b\u0c4b\u0c28\u0c4d\u200c\u0c32\u0c4b \u0c24\u0c46\u0c32\u0c41\u0c17\u0c41 \u0c35\u0c3e\u0c2f\u0c3f\u0c38\u0c4d \u0c32\u0c47\u0c28\u0c1f\u0c4d\u0c1f\u0c41 \u0c09\u0c02\u0c26\u0c3f. Settings \u2192 Language \u2192 Text-to-speech \u2192 Google \u2192 Install voice data \u2192 Telugu \u0c32\u0c4b \u0c07\u0c28\u0c4d\u200c\u0c38\u0c4d\u0c1f\u0c3e\u0c32\u0c4d \u0c1a\u0c47\u0c2f\u0c02\u0c21\u0c3f.",hi:"\u0906\u092a\u0915\u0947 \u092b\u094b\u0928 \u092e\u0947\u0902 \u0939\u093f\u0902\u0926\u0940 \u0906\u0935\u093e\u091c\u093c \u0928\u0939\u0940\u0902 \u0926\u093f\u0916 \u0930\u0939\u0940\u0964 Settings \u2192 Language \u2192 Text-to-speech \u2192 Google \u2192 Install voice data \u2192 Hindi \u092e\u0947\u0902 \u0907\u0902\u0938\u094d\u091f\u0949\u0932 \u0915\u0930\u0947\u0902\u0964"})[lang]);
+ hinted[lang]=1;add("bot",SILENT[lang]);
 }
+function stopSpeak(){speakId++;try{speechSynthesis.cancel()}catch(e){}speaking=false}
 function speak(text,after){
  if(!window.speechSynthesis){after&&after();return}
  stopListen();
  try{if(speechSynthesis.speaking||speechSynthesis.pending)speechSynthesis.cancel()}catch(e){}
+ var my=++speakId;
  var parts=text.match(/[^.!?\u0964]+[.!?\u0964]*/g)||[text];
  var done=false,i=0,v=pickVoice();
  speaking=true;setState("spk");hintVoice();
- var fin=function(){if(done)return;done=true;speaking=false;setState(listening?"lis":"idle");after&&after()};
+ var fin=function(){if(done||my!==speakId)return;done=true;speaking=false;setState(listening?"lis":"idle");after&&after()};
  var next=function(){
-  if(done)return;
+  if(done||my!==speakId)return;
   if(i>=parts.length){fin();return}
   var s=parts[i++].trim();if(!s){next();return}
-  var k=i;
+  var k=i,began=false;
   var u=new SpeechSynthesisUtterance(s);u.lang=LC[lang];if(v)u.voice=v;u.rate=.95;u.volume=1;
+  u.onstart=function(){began=true};
   var wd=setTimeout(function(){if(i===k)next()},s.length*150+2500);
   var go=function(){clearTimeout(wd);if(i===k)next()};
   u.onend=go;u.onerror=go;
+  setTimeout(function(){
+   if(!began&&i===k&&my===speakId&&!done){
+    try{speechSynthesis.cancel()}catch(e){}
+    clearTimeout(wd);
+    if(!silentHint){silentHint=1;add("bot",SILENT[lang])}
+    fin();
+   }
+  },3000);
   speechSynthesis.speak(u);
  };
  setTimeout(next,150);
- setTimeout(fin,text.length*160+6000);
 }
 function say(key,vars,act){
  var t=R[key][lang];
@@ -196,6 +206,7 @@ function startListen(){
   listening=false;setState("idle");
   if(e.error==="not-allowed"||e.error==="service-not-allowed"){if(!denied){denied=true;add("bot",({en:"The microphone does not work on this preview page. It will work when the page is on the clinic website. For now, type or use the buttons.",te:"ఈ ప్రవ్యూ పేజీలో మైక్రోఫోన్ పనిచేయదు. క్లినిక్ వెబ్సైట్‌లో పెట్టితే వాయిస్ పనిచేస్తుంది. ప్రస్తుతానికి టైప్ చేయండి లేదా బటన్లు నొక్కండి.",hi:"इस प्रिव्यू पेज पर माइक्रोफ़ोन काम नहीं करता। क्लिनिक की वेबसाइट पर रखने से वॉइस चलेगा। अभी टाइप करें या बटन दबाएँ।"})[lang])}}
   else if(e.error==="no-speech"||e.error==="network"||e.error==="language-not-supported"){var M={no:{en:"I did not hear you. Tap the mic and speak again.",te:"మీ మాట వినిపించలేదు. మైక్ నొక్కి మళ్లీ మాట్లాడండి.",hi:"आवाज़ सुनाई नहीं दी। माइक दबाकर फिर बोलिए।"},net:{en:"Voice needs internet. Check your connection, or type your message.",te:"వాయిస్‌కి ఇంటర్నెట్ కావాలి. కనెక్షన్ చూడండి లేదా టైప్ చేయండి.",hi:"वॉइस के लिए इंटरनेट चाहिए। कनेक्शन जाँचें या टाइप करें।"}};add("bot",(e.error==="no-speech"?M.no:M.net)[lang])}
+  else if(e.error!=="aborted"){add("bot","Mic error: "+e.error)}
  };
  rec.onend=function(){listening=false;setState(speaking?"spk":"idle");liveEl.textContent="";var q=finalText||lastText;if(q)handle(q)};
  try{rec.start()}catch(err){}
@@ -206,7 +217,7 @@ function begin(){
  return false;
 }
 orb.addEventListener("click",function(){
- if(speaking){speechSynthesis.cancel();speaking=false;setState("idle");return}
+ if(speaking){stopSpeak();setState("idle");startListen();return}
  if(listening){stopListen();setState("idle");return}
  if(begin())return;
  startListen();
